@@ -1,3 +1,5 @@
+// Written by Aaron Beaudoin at Union College
+
 let mixin = { computed: {}, methods: {} };
 export default mixin;
 

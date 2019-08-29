@@ -46,3 +46,5 @@ green-title-bar-f50: ["hsluv", 120, 100, 50]
 green-title-bar-f60: ["hsluv", 120, 100, 60]
 green-title-bar-t50: ["hsl", 0, 0, 100]
 ```
+
+Written by Aaron Beaudoin at Union College.
