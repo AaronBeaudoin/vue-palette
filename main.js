@@ -46,6 +46,20 @@ mixin.methods.buildPalette = function(palette) {
     else return concat(resolvable[0], flatten(resolved));
   };
 
+  let extend = (resolvable, extensions) => {
+    let indexIsArray = index => isArray(resolvable[index]);
+    let extendIndexes = filter(keys(resolvable), indexIsArray);
+
+    let extendResolvableIndex = (extendIndex, extensionIndex) => {
+      if (extensionIndex >= extensions.length) return;
+      extendedResolvable[extendIndex] = extensions[extensionIndex];
+    };
+
+    let extendedResolvable = clone(resolvable);
+    forEach(extendIndexes, extendResolvableIndex);
+    return extendedResolvable;
+  };
+
   return reduce(palette, (accum, resolvable, name) => {
     if (hasModel(resolvable)) {
       accum[name] = resolve(resolvable, palette);
@@ -55,9 +69,7 @@ mixin.methods.buildPalette = function(palette) {
 
       let matching = filter(keys(palette), startsWithPattern);
       forEach(matching, name => {
-        let extendResolvable = item => isArray(item) ? resolvable : item;
-        let extendedResolvable = map(palette[name], extendResolvable);
-        let color = resolve(extendedResolvable, palette);
+        let color = resolve(extend(palette[name], resolvable), palette);
         accum[`${extendName}-${name}`] = color;
       });
     }
