@@ -4,7 +4,7 @@
 
 ## Dependencies
 
-Lodash is required.
+Function were written using `lodash@4.17` and `hsluv@0.0.3`.
 
 ## JSON Palette Example
 
