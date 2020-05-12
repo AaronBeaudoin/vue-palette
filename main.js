@@ -87,3 +87,8 @@ mixin.methods.definePaletteVariables = function(colors) {
     root.style.setProperty(propertyName, colorText);
   });
 };
+
+mixin.methods.applyPalette = function(palette) {
+  let colors = this.buildPalette(palette);
+  this.definePaletteVariables(colors);
+};
